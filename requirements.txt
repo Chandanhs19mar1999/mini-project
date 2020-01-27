@@ -47,7 +47,6 @@ future==0.17.1
 gast==0.2.2
 gevent==1.4.0
 glob2==0.7
-gmpy2==2.0.8
 google-pasta==0.1.8
 greenlet==0.4.15
 grpcio==1.23.0
@@ -148,7 +147,6 @@ pycurl==7.43.0.3
 pyflakes==2.1.1
 Pygments==2.4.2
 pylint==2.4.2
-pyodbc==4.0.27
 pyOpenSSL==19.1.0
 pyparsing==2.4.2
 pyrsistent==0.15.4
