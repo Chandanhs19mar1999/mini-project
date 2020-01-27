@@ -116,7 +116,6 @@ numpydoc==0.9.1
 olefile==0.46
 opencv-python==4.1.2.30
 openpyxl==3.0.0
-opt-einsum==0+untagged.49.gdbede45.dirty
 packaging==19.2
 pandas==0.25.3
 pandocfilters==1.4.2
