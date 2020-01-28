@@ -26,7 +26,7 @@ import mahotas
 @csrf_exempt
 def index(request):
     categories = ['Healthy', 'bacterialSpot', 'lateblight', 'septoriaLeafSpot', 'tomato_mosaic', 'yellowcurved']
-    rfc = open("rfc_classifier.pickle","rb")
+    rfc = open("ml_models/rfc_classifier.pickle","rb")
     img_str=request.get['img']
     clf = pickle.load(rfc)
     fixed_size = tuple((500, 500))
