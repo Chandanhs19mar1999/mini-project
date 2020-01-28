@@ -26,7 +26,7 @@ import mahotas
 @csrf_exempt
 def index(request):
     categories = ['Healthy', 'bacterialSpot', 'lateblight', 'septoriaLeafSpot', 'tomato_mosaic', 'yellowcurved']
-    rfc = open("rfc_classifier","rb")
+    rfc = open("rfc_classifier.pickle","rb")
     img_str=request.get['img']
     clf = pickle.load(rfc)
     fixed_size = tuple((500, 500))
@@ -47,7 +47,7 @@ def index(request):
     prediction = clf.predict(testimage)
     print(categories[prediction])
     print(request)
-    return HttpResponse("hello world")
+    return HttpResponse(categories[prediction])
 # Create your views here.
 
 def fd_hu_moments(image):
