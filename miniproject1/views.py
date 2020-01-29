@@ -71,4 +71,4 @@ def fd_histogram(image, mask=None):
 def getImage(b64str):
     imgdata = base64.b64decode(str(b64str))
     image = Image.open(io.BytesIO(imgdata))
-    return cv2.cvtColor(np.array(image), cv2.COLOR_BGR2RGB)
+    return cv2.cvtColor(cv2.UMat(image), cv2.COLOR_BGR2RGB)
