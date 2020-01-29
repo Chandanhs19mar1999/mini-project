@@ -27,7 +27,8 @@ import mahotas
 def index(request):
     categories = ['Healthy', 'bacterialSpot', 'lateblight', 'septoriaLeafSpot', 'tomato_mosaic', 'yellowcurved']
     rfc = open("ml_models/rfc_classifier.pickle","rb")
-    img_str=request.get['img']
+    img_str=request.POST.get('img','none')
+    print(img_str)
     clf = pickle.load(rfc)
     fixed_size = tuple((500, 500))
     bins=8
