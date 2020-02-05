@@ -36,7 +36,7 @@ def index(request):
     fixed_size = tuple((500, 500))
     bins=8
     #image = cv2.UMat(img)
-    image = cv2.resize(image, fixed_size)
+    image = cv2.resize(img, fixed_size)
     fv_hu_moments = fd_hu_moments(image)
     fv_haralick   = fd_haralick(image)
     fv_histogram  = fd_histogram(image)
