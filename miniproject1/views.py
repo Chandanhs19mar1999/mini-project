@@ -29,12 +29,13 @@ def index(request):
     rfc = open("ml_models/rfc_classifier.pickle","rb")
     print(request,"\n\n\n")
     img=request.POST.get('temp_file','none')
+    print(request)
     print(img)
     print(type(img))
     clf = pickle.load(rfc)
     fixed_size = tuple((500, 500))
     bins=8
-    image = img
+    #image = cv2.UMat(img)
     image = cv2.resize(image, fixed_size)
     fv_hu_moments = fd_hu_moments(image)
     fv_haralick   = fd_haralick(image)
