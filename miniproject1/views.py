@@ -27,9 +27,10 @@ import mahotas
 def index(request):
     categories = ['Healthy', 'bacterialSpot', 'lateblight', 'septoriaLeafSpot', 'tomato_mosaic', 'yellowcurved']
     rfc = open("ml_models/rfc_classifier.pickle","rb")
-    print(request,"\n\n\n")
+    print(request.body,"\n\n\n")
     img=request.POST.get('image','none')
     print(request)
+    print()
     print(img)
     print(type(img))
     clf = pickle.load(rfc)
