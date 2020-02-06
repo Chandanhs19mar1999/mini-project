@@ -36,8 +36,10 @@ def index(request):
     clf = pickle.load(rfc)
     fixed_size = tuple((500, 500))
     bins=8
-    image = cv2.UMat(img)
-    image = cv2.resize(image, fixed_size)
+    imgUMat = np.float32(img)
+    #gray = cv2.cvtColor(imgUMat, cv2.COLOR_BGR2GRAY)
+    #image = cv2.UMat(img)
+    image = cv2.resize(imgUMat, fixed_size)
     fv_hu_moments = fd_hu_moments(image)
     fv_haralick   = fd_haralick(image)
     fv_histogram  = fd_histogram(image)
