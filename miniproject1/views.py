@@ -28,15 +28,15 @@ def index(request):
     categories = ['Healthy', 'bacterialSpot', 'lateblight', 'septoriaLeafSpot', 'tomato_mosaic', 'yellowcurved']
     rfc = open("ml_models/rfc_classifier.pickle","rb")
     print(request,"\n\n\n")
-    img=request.POST.get('temp_file','none')
+    img=request.POST.get('image','none')
     print(request)
     print(img)
     print(type(img))
     clf = pickle.load(rfc)
     fixed_size = tuple((500, 500))
     bins=8
-    #image = cv2.UMat(img)
-    image = cv2.resize(img, fixed_size)
+    image = cv2.UMat(img)
+    image = cv2.resize(image, fixed_size)
     fv_hu_moments = fd_hu_moments(image)
     fv_haralick   = fd_haralick(image)
     fv_histogram  = fd_histogram(image)
