@@ -56,6 +56,7 @@ def index(request):
     prediction = clf.predict(testimage)
     print(categories[prediction])
     print(request)
+    #here
     return HttpResponse(categories[prediction])
 # Create your views here.
 
