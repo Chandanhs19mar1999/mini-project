@@ -22,6 +22,7 @@ from sklearn.model_selection import KFold, StratifiedKFold
 from sklearn.metrics import confusion_matrix, accuracy_score, classification_report
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import MinMaxScaler
+from django.core.files.storage import FileSystemStorage
 import mahotas
 @csrf_exempt
 def index(request):
@@ -29,17 +30,18 @@ def index(request):
     rfc = open("ml_models/rfc_classifier.pickle","rb")
     #print(request.body,"\n\n\n")
     img=request.FILES['image']
-    print(request)
-    print()
-    print(img)
-    print(type(img))
+    img=Image.open(img)
+    # print(request)
+    # print()
+    # print(img)
+    # print(type(img))
     clf = pickle.load(rfc)
     fixed_size = tuple((500, 500))
-    bins=8
-    imgUMat = np.float32(img)
+    #bins=8
     #gray = cv2.cvtColor(imgUMat, cv2.COLOR_BGR2GRAY)
     #image = cv2.UMat(img)
-    image = cv2.resize(imgUMat, fixed_size)
+    image = cv2.resize(np.float32(img), fixed_size)
+    image= image.astype('uint8')
     fv_hu_moments = fd_hu_moments(image)
     fv_haralick   = fd_haralick(image)
     fv_histogram  = fd_histogram(image)
@@ -69,6 +71,7 @@ def fd_haralick(image):
     return haralick
 
 def fd_histogram(image, mask=None):
+    bins=8
     image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
     hist  = cv2.calcHist([image], [0, 1, 2], None, [bins, bins, bins], [0, 256, 0, 256, 0, 256])
     cv2.normalize(hist, hist)
