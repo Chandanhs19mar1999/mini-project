@@ -54,10 +54,11 @@ def index(request):
     testimage= testimage.flatten()
     testimage=testimage.reshape(1,-1)
     prediction = clf.predict(testimage)
-    print(categories[prediction])
+    res=categories[prediction[0]]
+    print(res)
     print(request)
     #here
-    return HttpResponse(categories[prediction])
+    return HttpResponse(res)
 # Create your views here.
 
 def fd_hu_moments(image):
