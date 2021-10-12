@@ -91,7 +91,7 @@ numba==0.45.1
 numexpr==2.7.0
 numpy==1.17.4
 numpydoc==0.9.1
-opencv-python==4.1.2.30
+opencv-python==4.2.0.32
 packaging==19.2
 pandas==0.25.3
 pandocfilters==1.4.2
